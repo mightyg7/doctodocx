@@ -1,7 +1,13 @@
 import os
 from win32com import client as wc
-for filename in os.listdir('C:\\Users\Mehrag\\Desktop\\samenvattingen'):
+
+#be sure your path ends with \\ 
+path = 'C:\\your_folder\\'
+
+#path to your folder where all the .doc files are located
+for filename in os.listdir(path):
     w = wc.Dispatch('Word.Application')
-    doc=w.Documents.Open('C:\\Users\\Mehrag\\Desktop\\samenvattingen\\' + filename)
-    doc.SaveAs('C:\\Users\\Mehrag\\Desktop\\samenvattingen\\' + filename + "x",16)
-    os.remove('C:\\Users\\Mehrag\\Desktop\\samenvattingen\\' + filename)
+    doc=w.Documents.Open(path + filename)
+    doc.SaveAs(path + filename + "x",16)
+#this deletes the .doc files
+    os.remove(path + filename)
